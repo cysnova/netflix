@@ -63,7 +63,7 @@ router.get("/", verify, async (req, res) => {
     const query = req.query.new;
     if (req.user.isAdmin) {
       try {
-        const user = query? await User.find().sort({_id:-1}).limit(10) : await User.find();
+        const user = query? await User.find().sort({_id:-1}).limit(5) : await User.find();
         res.status(200).json(user);
       } catch (err) {
         res.status(500).json(err);
