@@ -30,7 +30,7 @@ export default function Home() {
         const res = await axios.get("/api/users/stats",{
           headers: {
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTIxYmEyOTYyNDNjM2I3ZTMyYTU3ZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4ODM1MjYzNCwiZXhwIjoxNjg4Nzg0NjM0fQ.lXBQHBapBmuwErMmVnQCnafjXxIDOOo34hIPPWC63m4",
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTIxYmEyOTYyNDNjM2I3ZTMyYTU3ZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4ODM1Nzg2NywiZXhwIjoxNjg4Nzg5ODY3fQ.N7jx4yr2bxHh6U8OkwN7OrKlmvYk7797hqJFJva7TC8",
           },
         });
 
