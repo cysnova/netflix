@@ -13,6 +13,10 @@ import Login from "./pages/login/Login";
 import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import List from "./pages/list/List";
+import ListList from "./pages/listList/ListList";
+import NewList from "./pages/newList/NewList";
+
 
 
 
@@ -25,7 +29,7 @@ function App() {
         <Route path="/login"> {user ? <Redirect to='/' /> : <Login />}</Route>
         {user && (
           <>
-            {/* <Topbar /> */}
+            <Topbar />
             <div className="container">
               <Sidebar />
 
@@ -50,6 +54,15 @@ function App() {
               </Route>
               <Route path="/newproduct">
                 <NewProduct />
+              </Route>
+              <Route path="/lists">
+                <ListList />
+              </Route>
+              <Route path="/list/:listId">
+                <List />
+              </Route>
+              <Route path="/newlist">
+                <NewList />
               </Route>
             </div>
           </>
