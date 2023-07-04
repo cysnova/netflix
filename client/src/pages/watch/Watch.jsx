@@ -1,7 +1,6 @@
 import React from 'react'
 import './watch.scss'
 import { ArrowBackOutlined } from '@mui/icons-material'
-import video from '../../assets/eg.mp4'
 import { Link,useLocation } from 'react-router-dom'
 
 const Watch = () => {
