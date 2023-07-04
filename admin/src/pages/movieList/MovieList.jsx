@@ -1,20 +1,20 @@
-import "./productList.css";
+import "./movieList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import {MovieContext} from "../../context/movieContext/MovieContext"
+import { useContext, useEffect } from "react";
+import { MovieContext } from "../../context/movieContext/MovieContext";
 import { deleteMovie, getMovies } from "../../context/movieContext/apiCalls";
 
-export default function ProductList() {
-  
-  const {movies,dispatch} = useContext(MovieContext)
+export default function MovieList() {
+  const { movies, dispatch } = useContext(MovieContext);
 
-   useEffect(()=>{
-    getMovies(dispatch)
-   },[dispatch])
+  useEffect(() => {
+    getMovies(dispatch);
+  }, [dispatch]);
+
   const handleDelete = (id) => {
-    deleteMovie(id,dispatch);
+    deleteMovie(id, dispatch);
   };
 
   const columns = [
@@ -27,7 +27,7 @@ export default function ProductList() {
         return (
           <div className="productListItem">
             <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.name}
+            {params.row.title}
           </div>
         );
       },
@@ -36,7 +36,7 @@ export default function ProductList() {
     { field: "year", headerName: "year", width: 120 },
     { field: "limit", headerName: "limit", width: 120 },
     { field: "isSeries", headerName: "isSeries", width: 120 },
-   
+
     {
       field: "action",
       headerName: "Action",
@@ -44,7 +44,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-              <Link
+            <Link
               to={{ pathname: "/movie/" + params.row._id, movie: params.row }}
             >
               <button className="productListEdit">Edit</button>
@@ -66,8 +66,8 @@ export default function ProductList() {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection 
-        getRowId={(r)=>r._id}
+        checkboxSelection
+        getRowId={(r) => r._id}
       />
     </div>
   );
