@@ -46,13 +46,15 @@ export default function Home() {
   },[MONTHS]);
  
   return (
-    <div className="home">
-     
-      <Chart data={usersStats} title="User Analytics" grid dataKey="New User"/>
-      <div className="homeWidgets">
-        <WidgetSm/>
-      
+    <div className="home" style={{ display: "flex" }}>
+      <div className="chartContainer" style={{ width: "70%" ,height: "800px" }}>
+        <Chart data={usersStats} title="User Analytics" grid dataKey="New User" />
+      </div>
+      <div className="homeWidgets" style={{ width: "25%", height: "450px" }}>
+        <WidgetSm />
       </div>
     </div>
   );
-}
+  
+  
+  }  
