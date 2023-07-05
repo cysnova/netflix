@@ -1,14 +1,14 @@
-import axios from "axios";
-import { useRef } from "react";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import "./register.scss";
+import axios from 'axios';
+import { useRef } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './register.scss';
 
 export default function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -22,8 +22,12 @@ export default function Register() {
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
     try {
-      await axios.post("/api/auth/register", { email,username, password });
-      history.push("/login");
+      await axios.post('/api/auth/register', {
+        email,
+        username: usernameRef.current.value,
+        password: passwordRef.current.value,
+      });
+      navigate('/login');
     } catch (err) {}
   };
   return (

@@ -2,7 +2,7 @@ import ListReducer from "./ListReducer";
 import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
-    movies: [],
+    lists: [],
     isFetching: false,
     error: false,
 };
@@ -15,7 +15,7 @@ export const ListContextProvider = ({ children }) => {
     return (
         <ListContext.Provider
             value={{
-                movies: state.lists,
+                lists: state.lists,
                 isFetching: state.isFetching,
                 error: state.error,
                 dispatch,

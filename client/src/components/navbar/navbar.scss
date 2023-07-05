@@ -10,7 +10,10 @@
     &.scrolled{
         background-color: var(--main-color);
     }
-
+    .link:visited {
+        text-decoration: none;
+        color: white
+    }
     .container{
         height: 70px;
         padding: 0px 50px;

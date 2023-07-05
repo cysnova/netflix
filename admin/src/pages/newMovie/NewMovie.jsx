@@ -1,10 +1,12 @@
-import { useContext, useState } from "react";
-import "./newMovie.css";
-import storage from "../../firebase";
-import { createMovie } from "../../context/movieContext/apiCalls";
-import { MovieContext } from "../../context/movieContext/MovieContext";
+import { useContext, useState } from 'react';
+import './newMovie.css';
+import storage from '../../firebase';
+import { useHistory } from 'react-router-dom';
+import { createMovie } from '../../context/movieContext/apiCalls';
+import { MovieContext } from '../../context/movieContext/MovieContext';
 
 export default function NewMovie() {
+  let history = useHistory();
   const [movie, setMovie] = useState(null);
   const [img, setImg] = useState(null);
   const [imgTitle, setImgTitle] = useState(null);
@@ -25,11 +27,11 @@ export default function NewMovie() {
       const fileName = new Date().getTime() + item.label + item.file.name;
       const uploadTask = storage.ref(`/items/${fileName}`).put(item.file);
       uploadTask.on(
-        "state_changed",
+        'state_changed',
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
+          console.log('Upload is ' + progress + '% done');
         },
         (error) => {
           console.log(error);
@@ -49,19 +51,22 @@ export default function NewMovie() {
   const handleUpload = (e) => {
     e.preventDefault();
     upload([
-      { file: img, label: "img" },
-      { file: imgTitle, label: "imgTitle" },
-      { file: imgSm, label: "imgSm" },
-      { file: trailer, label: "trailer" },
-      { file: video, label: "video" },
+      { file: img, label: 'img' },
+      { file: imgTitle, label: 'imgTitle' },
+      { file: imgSm, label: 'imgSm' },
+      { file: trailer, label: 'trailer' },
+      { file: video, label: 'video' },
     ]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createMovie(movie, dispatch);
+    const job = async () => {
+      await createMovie(movie, dispatch);
+      history.push('/movies');
+    };
+    job();
   };
-
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Movie</h1>
@@ -171,11 +176,11 @@ export default function NewMovie() {
           />
         </div>
         {uploaded === 5 ? (
-          <button className="addProductButton" onClick={handleSubmit}>
+          <button className="createMovieButton" onClick={handleSubmit}>
             Create
           </button>
         ) : (
-          <button className="addProductButton" onClick={handleUpload}>
+          <button className="uploadMovieButton" onClick={handleUpload}>
             Upload
           </button>
         )}

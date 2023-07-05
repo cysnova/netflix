@@ -1,5 +1,8 @@
+/* 
 .productList{
     flex: 4;
+    border: 5px black solid;
+    background-color: #3bb077;
 }
 
 .productListItem{
@@ -28,4 +31,4 @@
 .productListDelete{
     color: red;
     cursor: pointer;
-}
+} */
